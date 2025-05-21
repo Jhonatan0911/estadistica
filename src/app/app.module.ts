@@ -3,16 +3,51 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-
+import { UploadComponent } from './pages/upload/upload.component';
+import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule } from '@angular/common/http';
+import { InputTextModule } from 'primeng/inputtext';
+import { ButtonModule } from 'primeng/button';
+import { FileUploadModule } from 'primeng/fileupload';
+import { TableModule } from 'primeng/table';
+import { CardModule } from 'primeng/card';
+import { DialogModule } from 'primeng/dialog';
+import { ToastModule } from 'primeng/toast';
+import { BadgeModule } from 'primeng/badge';
+import { MessageService } from 'primeng/api';
+import { LayoutPcaComponent } from './layouts/layout-pca/layout-pca.component';
+import { AsistenteComponent } from './pages/asistente/asistente.component';
+import { DropdownModule } from 'primeng/dropdown';
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    UploadComponent,
+    LayoutPcaComponent,
+    AsistenteComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    InputTextModule,
+    ButtonModule,
+    DropdownModule,
+    FileUploadModule,
+    TableModule,
+    CardModule,
+    DialogModule,
+    InputTextModule,
+    ButtonModule,
+    ToastModule,
+    BadgeModule,
+
   ],
-  providers: [],
+  providers: [MessageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

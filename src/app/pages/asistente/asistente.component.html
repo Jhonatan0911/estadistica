@@ -1,0 +1,57 @@
+<div class="flex flex-column align-items-center justify-content-center p-5">
+  <div class="card w-8 p-5 shadow-2">
+    <div class="text-center mb-5">
+      <h1 class="text-4xl font-bold text-primary mb-3">Asistente de Análisis Estadístico</h1>
+      <p class="text-xl text-700 mb-3">¡Hola! Soy el asistente de Análisis Estadístico de la Corporación Universitaria de la Costa Atlántica.</p>
+      <p class="text-lg text-600">Estoy aquí para ayudarte a analizar tus datos de manera fácil y rápida.</p>
+    </div>
+
+    <form [formGroup]="form" class="flex flex-column gap-4">
+      <div class="field">
+        <label for="tipoVariable" class="block text-xl font-semibold mb-2">Tipo de variable</label>
+        <p-dropdown id="tipoVariable"
+                   formControlName="tipoVariable"
+                   [options]="tiposVariable"
+                   optionLabel="label"
+                   optionValue="value"
+                   placeholder="Selecciona el tipo de variable"
+                   class="w-full">
+        </p-dropdown>
+      </div>
+
+      <div class="field">
+        <label for="tipoAnalisis" class="block text-xl font-semibold mb-2">Tipo de análisis</label>
+        <p-dropdown id="tipoAnalisis"
+                   formControlName="tipoAnalisis"
+                   [options]="tiposAnalisis"
+                   optionLabel="label"
+                   optionValue="value"
+                   placeholder="Selecciona el tipo de análisis"
+                   class="w-full">
+        </p-dropdown>
+      </div>
+
+      <div class="field">
+        <label for="numeroGrupos" class="block text-xl font-semibold mb-2">Número de grupos</label>
+        <p-dropdown id="numeroGrupos"
+                   formControlName="numeroGrupos"
+                   [options]="numeroGrupos"
+                   optionLabel="label"
+                   optionValue="value"
+                   placeholder="Selecciona el número de grupos"
+                   class="w-full">
+        </p-dropdown>
+      </div>
+
+      <div class="flex justify-content-end mt-4">
+        <p-button label="Continuar"
+                  icon="pi pi-arrow-right"
+                  [disabled]="!form.valid"
+                  class="p-button-lg"
+                  (onClick)="router.navigate(['/upload'])">
+        </p-button>
+      </div>
+    </form>
+  </div>
+</div>
+

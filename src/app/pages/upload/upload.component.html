@@ -1,0 +1,42 @@
+<div class="flex flex-column gap-2">
+  <header class="flex justify-content-between w-full">
+    <h1 class="text-3xl font-semibold">Cargar datos</h1>
+    <p-button label="Volver" icon="pi pi-arrow-left" (onClick)="router.navigate(['/asistente'])"></p-button>
+  </header>
+
+  <div class="w-100 flex justify-content-center flex-wrap">
+    <div class="card w-6">
+      <p-toast />
+      <p-fileUpload name="myfile[]" url="https://www.primefaces.org/cdn/api/upload.php" [multiple]="false" [fileLimit]="1" accept=".xls,.xlsx" [maxFileSize]="100000000" (onSelect)="onSelectedFiles($event)" [showUploadButton]="false" cancelLabel="Limpiar" chooseLabel="Adjuntar" (onClear)="files = []" (onRemove)="files = []">
+          <ng-template pTemplate="content" let-files>
+            <div class="flex align-items-center justify-content-center flex-column">
+              <i class="pi pi-cloud-upload border-circle p-5 text-8xl text-400 border-400"></i>
+              <p class="mt-4 mb-0">Arrastra y suelta archivos aquí para cargar.</p>
+            </div>
+            <div *ngIf="files?.length > 0">
+              <div class="flex flex-wrap p-0 sm:p-5 gap-5">
+                <div *ngFor="let file of files; let i = index" class="card w-full m-0 px-6 flex flex-column border-1 surface-border align-items-center gap-3">
+                  <div>
+                    <i class="pi pi-file-excel text-6xl text-green-500"></i>
+                  </div>
+                  <span class="font-semibold">{{ file.name }}</span>
+                  <div>{{ formatSize(file.size) }}</div>
+                  <p-badge value="Pendiente" severity="warning" />
+                </div>
+              </div>
+            </div>
+          </ng-template>
+          <ng-template pTemplate="file">
+
+          </ng-template>
+          <ng-template pTemplate="empty">
+
+          </ng-template>
+      </p-fileUpload>
+      <div class="flex w-full my-3 justify-content-end">
+        <p-button label="Cargar" icon="pi pi-save" (onClick)="cargar()" [loading]="loadingCargarExcel" [disabled]="loadingCargarExcel"></p-button>
+      </div>
+    </div>
+
+  </div>
+</div>

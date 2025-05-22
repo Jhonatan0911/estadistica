@@ -1,0 +1,39 @@
+<div class="flex flex-column align-items-center justify-content-center p-5">
+  <div class="card w-8 p-5 shadow-2">
+    <div class="text-center mb-5">
+      <h1 class="text-4xl font-bold text-primary mb-3">Asistente de Análisis Estadístico</h1>
+        <p class="text-xl text-700 mb-3"> Analicemos la variable que elijas</p>
+        <p class="text-lg text-600">Si quieres puedes elegir una variable de grupo para comparar los resultados.</p>
+    </div>
+
+
+    <app-excel-preview *ngIf="uploadService.file" [file]="uploadService.file"></app-excel-preview>
+
+    <app-seleccion-variable
+      *ngIf="uploadService.file"
+      [columnas]="excelService.columnas"
+      [data]="excelService.datos"
+      [configAsistente]="asistenteService.form.value"
+      (variablesSeleccionadas)="mostrarResultado($event)"
+    ></app-seleccion-variable>
+
+
+    <app-resultado
+      *ngIf="resultadoVisible"
+      [datos]="resultadoData.data"
+      [columnaValor]="resultadoData.columnaValor"
+      [columnaGrupo]="resultadoData.columnaGrupo"
+      [tipoVariable]="resultadoData.config.tipoVariable"
+      [tipoAnalisis]="resultadoData.config.tipoAnalisis"
+      [numeroGrupos]="resultadoData.config.numeroGrupos"
+    ></app-resultado>
+
+
+    <div class="flex justify-content-between mt-4">
+      <p-button label="Volver" icon="pi pi-arrow-left" (onClick)="router.navigate(['/upload'])"></p-button>
+
+      <p-button label="Graficar" icon="pi pi-chart-bar" class="p-button-lg" (onClick)="router.navigate(['/graficar'])"></p-button>
+    </div>
+  </div>
+</div>
+

@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { MessageService, PrimeNGConfig } from 'primeng/api';
+import { UploadService } from './upload.service';
 
 @Component({
   selector: 'app-upload',
@@ -10,23 +12,52 @@ export class UploadComponent {
 
   loadingCargarExcel: boolean = false;
 
-  files: any[] = [];
 
-  constructor(public router: Router) {}
+  constructor(public router: Router, private config: PrimeNGConfig, private messageService: MessageService, public uploadService: UploadService) {}
 
-  onSelectedFiles(event: any) {
-    console.log(event);
-    this.files = event.files;
+  descargarPlantilla(){
+    const link = document.createElement('a');
+    link.href = 'assets/plantillas/plantilla_analisis_estadistico.xlsx';
+    link.download = 'plantilla_analisis_estadistico.xlsx';
+    link.click();
+  }
+
+  onSelectedFiles(event:any) {
+    const file = event.files?.[0];
+    if (file) {
+      this.uploadService.file = file;
+    }
   }
 
   cargar() {
+    if(!this.uploadService.file){
+      this.messageService.add({ severity: 'warn', summary: 'Advertencia', detail: 'No ha seleccionado ningún archivo para cargar', life: 3000 });
+      return;
+    }
     this.loadingCargarExcel = true;
+
+
     setTimeout(() => {
       this.loadingCargarExcel = false;
-    }, 3000);
+      this.uploadService.isCargado = true;
+    }, 2000);
   }
 
-  formatSize(size: number) {
-    return size / 1024 / 1024;
+  formatSize(bytes:any) {
+    const k = 1024;
+    const dm = 3;
+    const sizes:any = this.config.translation.fileSizeTypes;
+    if (bytes === 0) {
+        return `0 ${sizes[0]}`;
+    }
+
+    const i = Math.floor(Math.log(bytes) / Math.log(k));
+    const formattedSize = parseFloat((bytes / Math.pow(k, i)).toFixed(dm));
+
+    return `${formattedSize} ${sizes[i]}`;
+  }
+
+  reset() {
+    this.uploadService.file = null;
   }
 }

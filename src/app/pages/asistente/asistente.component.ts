@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AsistenteService } from './asistente.service';
 
 @Component({
   selector: 'app-asistente',
@@ -8,12 +9,6 @@ import { Router } from '@angular/router';
   styleUrls: ['./asistente.component.css']
 })
 export class AsistenteComponent {
-
-  form = new FormGroup({
-    tipoVariable: new FormControl('', Validators.required),
-    tipoAnalisis: new FormControl('', Validators.required),
-    numeroGrupos: new FormControl('', Validators.required)
-  });
 
   tiposVariable = [
     { label: 'Cuantitativa (números)', value: 'cuantitativa' },
@@ -32,5 +27,5 @@ export class AsistenteComponent {
     { label: '2 grupos (comparar)', value: 2 }
   ];
 
-  constructor(public router: Router) {}
+  constructor(public router: Router, public asistenteService: AsistenteService) {}
 }

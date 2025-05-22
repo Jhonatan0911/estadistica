@@ -6,52 +6,51 @@
       <p class="text-lg text-600">Estoy aquí para ayudarte a analizar tus datos de manera fácil y rápida.</p>
     </div>
 
-    <form [formGroup]="form" class="flex flex-column gap-4">
-      <div class="field">
+    <form [formGroup]="asistenteService.form" class="grid formgrid">
+      <div class="field col-12 md:col-6">
         <label for="tipoVariable" class="block text-xl font-semibold mb-2">Tipo de variable</label>
         <p-dropdown id="tipoVariable"
-                   formControlName="tipoVariable"
-                   [options]="tiposVariable"
-                   optionLabel="label"
-                   optionValue="value"
-                   placeholder="Selecciona el tipo de variable"
-                   class="w-full">
+          formControlName="tipoVariable"
+          [options]="tiposVariable"
+          optionLabel="label"
+          optionValue="value"
+          placeholder="Selecciona el tipo de variable"
+          styleClass="w-full">
         </p-dropdown>
       </div>
 
-      <div class="field">
+      <div class="field col-12 md:col-6">
         <label for="tipoAnalisis" class="block text-xl font-semibold mb-2">Tipo de análisis</label>
         <p-dropdown id="tipoAnalisis"
-                   formControlName="tipoAnalisis"
-                   [options]="tiposAnalisis"
-                   optionLabel="label"
-                   optionValue="value"
-                   placeholder="Selecciona el tipo de análisis"
-                   class="w-full">
+          formControlName="tipoAnalisis"
+          [options]="tiposAnalisis"
+          optionLabel="label"
+          optionValue="value"
+          placeholder="Selecciona el tipo de análisis"
+          styleClass="w-full">
         </p-dropdown>
       </div>
 
-      <div class="field">
+      <div class="field col-12 md:col-6">
         <label for="numeroGrupos" class="block text-xl font-semibold mb-2">Número de grupos</label>
         <p-dropdown id="numeroGrupos"
-                   formControlName="numeroGrupos"
-                   [options]="numeroGrupos"
-                   optionLabel="label"
-                   optionValue="value"
-                   placeholder="Selecciona el número de grupos"
-                   class="w-full">
+          formControlName="numeroGrupos"
+          [options]="numeroGrupos"
+          optionLabel="label"
+          optionValue="value"
+          placeholder="Selecciona el número de grupos"
+          styleClass="w-full">
         </p-dropdown>
       </div>
-
-      <div class="flex justify-content-end mt-4">
-        <p-button label="Continuar"
-                  icon="pi pi-arrow-right"
-                  [disabled]="!form.valid"
-                  class="p-button-lg"
-                  (onClick)="router.navigate(['/upload'])">
-        </p-button>
-      </div>
     </form>
+    <div class="flex justify-content-end mt-4">
+      <p-button label="Continuar"
+                icon="pi pi-arrow-right"
+                [disabled]="!asistenteService.form.valid"
+                class="p-button-lg"
+                (onClick)="router.navigate(['/upload'])">
+      </p-button>
+    </div>
   </div>
 </div>
 

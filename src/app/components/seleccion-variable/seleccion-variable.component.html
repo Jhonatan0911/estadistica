@@ -1,0 +1,32 @@
+<div class="card">
+  <h3>Selección de Variables</h3>
+
+  <div class="grid formgrid">
+    <div class="field col-12 md:col-6">
+      <label for="variable" class="block text-xl font-semibold mb-2">Variable a analizar</label>
+      <p-dropdown
+        styleClass="w-full"
+        [options]="columnas"
+        [(ngModel)]="columnaValor"
+        placeholder="Selecciona la variable a analizar"
+        [filter]="true"
+        optionLabel="">
+      </p-dropdown>
+    </div>
+
+    <div class="field col-12 md:col-6">
+      <label for="grupo" class="block text-xl font-semibold mb-2">Variable de grupo (opcional)</label>
+      <p-dropdown
+        styleClass="w-full"
+        [options]="columnas"
+        [(ngModel)]="columnaGrupo"
+        placeholder="Selecciona la variable de grupo (opcional)"
+        [filter]="true"
+        optionLabel=""
+      ></p-dropdown>
+    </div>
+  </div>
+  <div class="mt-3 flex justify-content-end w-full">
+    <button pButton label="Analizar" icon="pi pi-check" (click)="enviarSeleccion()" [disabled]="!columnaValor"></button>
+  </div>
+</div>

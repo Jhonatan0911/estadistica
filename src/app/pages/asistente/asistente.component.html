@@ -1,14 +1,14 @@
-<div class="flex flex-column align-items-center justify-content-center p-5">
-  <div class="card w-8 p-5 shadow-2">
+<div class="flex flex-column align-items-center justify-content-center p-3 md:p-5 mb-3">
+  <div class="card w-full md:w-8 p-3 md:p-5 shadow-2">
     <div class="text-center mb-5">
-      <h1 class="text-4xl font-bold text-primary mb-3">Asistente de Análisis Estadístico</h1>
-      <p class="text-xl text-700 mb-3">¡Hola! Soy el asistente de Análisis Estadístico de la Corporación Universitaria de la Costa Atlántica.</p>
-      <p class="text-lg text-600">Estoy aquí para ayudarte a analizar tus datos de manera fácil y rápida.</p>
+      <h1 class="text-2xl md:text-4xl font-bold text-primary mb-3">Asistente de Análisis Estadístico</h1>
+      <p class="text-base md:text-lg text-700 mb-3">¡Hola! Soy el asistente de Análisis Estadístico de la Corporación Universitaria de la Costa Atlántica.</p>
+      <p class="text-sm md:text-base text-600">Estoy aquí para ayudarte a analizar tus datos de manera fácil y rápida.</p>
     </div>
 
     <form [formGroup]="asistenteService.form" class="grid formgrid">
       <div class="field col-12 md:col-6">
-        <label for="tipoVariable" class="block text-xl font-semibold mb-2">Tipo de variable</label>
+        <label for="tipoVariable" class="block text-lg md:text-xl font-semibold mb-2">Tipo de variable <span class="text-red-500">*</span></label>
         <p-dropdown id="tipoVariable"
           formControlName="tipoVariable"
           [options]="tiposVariable"
@@ -20,7 +20,7 @@
       </div>
 
       <div class="field col-12 md:col-6">
-        <label for="tipoAnalisis" class="block text-xl font-semibold mb-2">Tipo de análisis</label>
+        <label for="tipoAnalisis" class="block text-lg md:text-xl font-semibold mb-2">Tipo de análisis <span class="text-red-500">*</span></label>
         <p-dropdown id="tipoAnalisis"
           formControlName="tipoAnalisis"
           [options]="tiposAnalisis"
@@ -32,7 +32,7 @@
       </div>
 
       <div class="field col-12 md:col-6">
-        <label for="numeroGrupos" class="block text-xl font-semibold mb-2">Número de grupos</label>
+        <label for="numeroGrupos" class="block text-lg md:text-xl font-semibold mb-2">Número de grupos <span class="text-red-500">*</span></label>
         <p-dropdown id="numeroGrupos"
           formControlName="numeroGrupos"
           [options]="numeroGrupos"

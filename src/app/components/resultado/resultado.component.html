@@ -1,16 +1,16 @@
 <div class="card">
-  <h3 class="mb-3">Resultado del Análisis</h3>
+  <h3 class="mb-3 text-lg md:text-xl font-bold text-primary">Resultado del Análisis</h3>
 
   <div *ngIf="resultado">
     <!-- Comparación de grupos (cuando existen grupo1 y grupo2) -->
     <div *ngIf="resultado.grupo1 && resultado.grupo2">
-      <h4>Grupo: {{ resultado.grupo1.nombre }}</h4>
+      <h4 class="text-lg md:text-xl font-bold text-primary">Grupo: {{ resultado.grupo1.nombre }}</h4>
       <p><strong>Media:</strong> {{ resultado.grupo1.media | number: '1.2-2' }}</p>
       <p><strong>Desviación estándar:</strong> {{ resultado.grupo1.desviacionEstandar | number: '1.2-2' }}</p>
       <p><strong>Varianza:</strong> {{ resultado.grupo1.varianza | number: '1.2-2' }}</p>
       <p><strong>N:</strong> {{ resultado.grupo1.n }}</p>
 
-      <h4 class="mt-3">Grupo: {{ resultado.grupo2.nombre }}</h4>
+      <h4 class="mt-3 text-lg md:text-xl font-bold text-primary">Grupo: {{ resultado.grupo2.nombre }}</h4>
       <p><strong>Media:</strong> {{ resultado.grupo2.media | number: '1.2-2' }}</p>
       <p><strong>Desviación estándar:</strong> {{ resultado.grupo2.desviacionEstandar | number: '1.2-2' }}</p>
       <p><strong>Varianza:</strong> {{ resultado.grupo2.varianza | number: '1.2-2' }}</p>
@@ -30,7 +30,7 @@
 
     <!-- Resultado de prueba t (si existe) -->
     <div *ngIf="resultado.pruebaT">
-      <h4 class="mt-4">Prueba t de Student</h4>
+      <h4 class="mt-4 text-lg md:text-xl font-bold text-primary">Prueba t de Student</h4>
 
       <!-- Mensaje de advertencia si no se puede calcular t o p -->
       <div *ngIf="resultado.pruebaT.t === null || resultado.pruebaT.p === null || isNaN(resultado.pruebaT.t) || isNaN(resultado.pruebaT.p)" class="alert alert-warning">
@@ -49,7 +49,7 @@
 
     <!-- Descriptivo cuantitativo individual -->
     <div *ngIf="resultado.media !== undefined && resultado.tipo === 'Descriptivo Cuantitativo'">
-      <h4>Análisis Descriptivo</h4>
+      <h4 class="text-lg md:text-xl font-bold text-primary">Análisis Descriptivo</h4>
       <p><strong>Media:</strong> {{ resultado.media | number: '1.2-2' }}</p>
       <p><strong>Desviación estándar:</strong> {{ resultado.desviacionEstandar | number: '1.2-2' }}</p>
       <p><strong>Varianza:</strong> {{ resultado.varianza | number: '1.2-2' }}</p>
@@ -58,14 +58,14 @@
 
     <!-- Intervalo de Confianza -->
     <div *ngIf="resultado.tipo === 'Intervalo de confianza'">
-      <h4>Intervalo de Confianza 95%</h4>
+      <h4 class="text-lg md:text-xl font-bold text-primary">Intervalo de Confianza 95%</h4>
       <p><strong>Intervalo:</strong> [{{ resultado.intervalo[0] | number: '1.2-2' }} , {{ resultado.intervalo[1] | number: '1.2-2' }}]</p>
       <p><strong>Error estándar:</strong> {{ resultado.error | number: '1.2-2' }}</p>
     </div>
 
     <!-- Descriptivo Cualitativo -->
     <div *ngIf="resultado.tipo === 'Descriptivo Cualitativo'">
-      <h4>Análisis Descriptivo Cualitativo</h4>
+      <h4 class="text-lg md:text-xl font-bold text-primary">Análisis Descriptivo Cualitativo</h4>
       <p><strong>Total:</strong> {{ resultado.total }}</p>
       <table class="p-datatable p-component">
         <thead>

@@ -57,6 +57,18 @@ export class UploadComponent {
     return `${formattedSize} ${sizes[i]}`;
   }
 
+  siguiente(){
+    if(!this.uploadService.file){
+      this.messageService.add({ severity: 'warn', summary: 'Advertencia', detail: 'No ha seleccionado ningún archivo para cargar', life: 3000 });
+      return;
+    }
+    if(!this.uploadService.isCargado){
+      this.messageService.add({ severity: 'warn', summary: 'Advertencia', detail: 'No se ha cargado el archivo', life: 3000 });
+      return;
+    }
+    this.router.navigate(['/analisis']);
+  }
+
   reset() {
     this.uploadService.file = null;
   }

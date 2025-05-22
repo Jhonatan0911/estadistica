@@ -34,6 +34,10 @@ body {
   margin-bottom: 1rem;
 }
 
+.text-red-500 {
+  color: var(--red-500) !important;
+}
+
 .card-custom .card-header {
   display: flex;
   flex-direction: column;

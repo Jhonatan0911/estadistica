@@ -6,6 +6,11 @@ import { AnalisisComponent } from './pages/analisis/analisis.component';
 
 const routes: Routes = [
   {
+    path: '',
+    redirectTo: 'asistente',
+    pathMatch: 'full'
+  },
+  {
     path: 'upload',
     component: UploadComponent
   },
